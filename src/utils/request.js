@@ -3,7 +3,7 @@ import { getHostName } from "./HostName";
 const hostname = getHostName();
 
 const defParams = {
-  state: 0,
+  state: 503,
   message: "",
   data: "",
 };
@@ -13,7 +13,7 @@ const fetchPromise = (url, option) =>
       resolve(defParams);
     }, 30000); // timeout
     const output = Object.assign({}, defParams); // 定義輸出結構
-    fetch(`${hostname}/worktime/${url}`, option)
+    fetch(`${hostname}/api/worktime/v2/${url}`, option)
       .then((res) => {
         // 获取到的数据处理
         output.state = res.status;
