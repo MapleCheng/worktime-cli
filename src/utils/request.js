@@ -1,31 +1,36 @@
-import { getHostName } from './HostName';
+import { getHostName } from "./HostName";
 
 const hostname = getHostName();
 
 const defParams = {
   state: 0,
-  message: '',
-  data: ''
+  message: "",
+  data: "",
 };
-const fetchPromise = (url, option) => new Promise((resolve) => {
+const fetchPromise = (url, option) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(defParams);
+    }, 30000); // timeout
+    const output = Object.assign({}, defParams); // 定義輸出結構
+    fetch(`${hostname}/worktime/${url}`, option)
+      .then((res) => {
+        // 获取到的数据处理
+        output.state = res.status;
+        return res.json();
+      })
+      .then((data) => {
+        // body
+        // console.log(data)
+        output.data = data;
+        resolve(output);
+      })
+      .catch((error) => {
+        // Error
+        console.log(error);
+        output.state = 503;
+        resolve(output);
+      });
+  });
 
-  setTimeout(() => { resolve(defParams) }, 30000); // timeout
-  const output = Object.assign({}, defParams); // 定義輸出結構
-  fetch(`${hostname}/worktime/${url}`, option)
-    .then((res) => { // 获取到的数据处理
-      output.state = res.status;
-      return res.json();
-    })
-    .then((data) => { // body
-      // console.log(data)
-      output.data = data;
-      resolve(output);
-    })
-    .catch((error) => { // Error
-      console.log(error);
-      output.state = 503;
-      resolve(output);
-    })
-});
-
-export default fetchPromise
+export default fetchPromise;
