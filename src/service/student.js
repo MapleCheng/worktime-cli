@@ -12,7 +12,7 @@ export const reqGetStudentNumberList = async (params) => {
 };
 
 // 取得學生詳細資訊
-export const reqOnAttendance = async (params) => {
+export const reqGetStudentDetail = async (params) => {
   const { student_no } = params;
 
   const payload = GETurl({ student_no });
