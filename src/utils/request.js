@@ -4,6 +4,7 @@ const hostname = getHostName();
 
 const defParams = {
   state: 503,
+  code: 503,
   message: "",
   data: "",
 };
@@ -21,8 +22,9 @@ const fetchPromise = (url, option) =>
       })
       .then((data) => {
         // body
-        // console.log(data)
-        output.data = data;
+        output.code = data.code;
+        output.data = data.data;
+        output.message = data.message;
         resolve(output);
       })
       .catch((error) => {
