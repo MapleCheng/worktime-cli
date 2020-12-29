@@ -9,6 +9,7 @@ let mainWindow;
 function createWindow() {
   //创建浏览器窗口,宽高自定义具体大小你开心就好
   mainWindow = new BrowserWindow({
+    title: "服務簽到系統",
     width: 400,
     height: 600,
     minWidth: 400,
@@ -17,6 +18,7 @@ function createWindow() {
     maxHeight: 600,
     x: 50,
     y: 50,
+    icon: path.join(__dirname, "build/icon.ico"),
   });
   // mainWindow.loadURL(url.format({
   //   pathname: path.join(__dirname, './build/index.html'),
@@ -25,20 +27,14 @@ function createWindow() {
   // }));
 
   //* 加载应用-----  electron-quick-start中默认的加载入口
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, "build/index.html"),
-      protocol: "file:",
-      slashes: true,
-    })
-  );
+  mainWindow.loadFile(path.join(__dirname, "./build/index.html"));
 
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('http://localhost:3000/');
   //   hide menu
   mainWindow.setMenuBarVisibility(false);
   // 打开开发者工具，默认不打开
-  // mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools();
 
   // 关闭window时触发下列事件.
   mainWindow.on("closed", function () {

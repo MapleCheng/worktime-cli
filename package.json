@@ -6,13 +6,23 @@
   "build": {
     "extends": null,
     "productName": "服務簽到系統",
-    "appId": "com.xxx.app",
+    "appId": "com.worktime-client.app",
     "win": {
       "target": [
         "nsis",
         "zip"
       ]
-    }
+    },
+    "directories": {
+      "output": "./dist",
+      "app": "./"
+    },
+    "files": [
+      "main.js",
+      "build/",
+      "node_modules",
+      "package.json"
+    ]
   },
   "homepage": ".",
   "dependencies": {
@@ -91,7 +101,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js & electron-builder --win --ia32",
     "test": "node scripts/test.js",
-    "electron": "electron ."
+    "electron": "electron .",
+    "dist": "electron-builder --win --ia32"
   },
   "eslintConfig": {
     "extends": [
