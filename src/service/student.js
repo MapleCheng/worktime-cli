@@ -11,13 +11,13 @@ export const reqGetStudentNumberList = async (params) => {
   });
 };
 
-// 取得學生詳細資訊
+// 取得學生資訊
 export const reqGetStudentDetail = async (params) => {
   const { student_no } = params;
 
   const payload = GETurl({ student_no });
 
-  return request(`/student/detail?${payload}`, {
+  return request(`/student/info?${payload}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

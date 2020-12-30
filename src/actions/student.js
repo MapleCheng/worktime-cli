@@ -1,4 +1,4 @@
-import { reqGetStudentNumberList, reqGetStudentDetail } from "../service/student";
+import { reqGetStudentNumberList, reqGetStudentInfo } from "../service/student";
 
 export const getStudentNumberList = async (dispatch, payload) => {
   const res = await reqGetStudentNumberList(payload);
@@ -10,7 +10,7 @@ export const getStudentNumberList = async (dispatch, payload) => {
 };
 
 export const getStudentDetail = async (dispatch, payload) => {
-  const res = await reqGetStudentDetail(payload);
+  const res = await reqGetStudentInfo(payload);
 
   return res.data;
 };
