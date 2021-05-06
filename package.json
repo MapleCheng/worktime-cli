@@ -1,6 +1,6 @@
 {
   "name": "worktime-client",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "private": true,
   "main": "main.js",
   "build": {
